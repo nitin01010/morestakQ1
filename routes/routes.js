@@ -14,11 +14,11 @@ router.get("/api/v1/users", async (req, res) => {
 
 router.post("/api/v1/users", async (req, res) => {
     try {
-        const { firstname, lastname, gender, email, phone, address } = req.body;
-        if (!firstname || !lastname || !gender || !email || !phone || !address) {
+        const { firstName, lastName, gender, email, phone, address } = req.body;
+        if (!firstName || !lastName || !gender || !email || !phone || !address) {
             return res.status(400).send({ message: 'Missing required fields' });
         }
-        const newUser = await userModel.create({ firstname, lastname, gender, email, phone, address });
+        const newUser = await userModel.create({ firstName, lastName, gender, email, phone, address });
         res.send({ message: 'User created successfully', user: newUser });
     } catch (error) {
         console.error('Error:', error);
