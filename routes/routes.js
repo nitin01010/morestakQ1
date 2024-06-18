@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get("/api/v1/users", async (req, res) => {
     try {
-        const users = await userModel.find();
+        const users = await userModel.find({});
         res.send({ users });
     } catch (error) {
         console.error('Error:', error);

@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
 const userShema = mongoose.Schema({
-    firstname: String,
-    lastname: String,
+    firstName: String,
+    lastName: String,
     gender: String,
     email: String,
     phone: Number,
-    address: String,
+    address: String
 });
 
 const userModel = new mongoose.model('user', userShema);
