@@ -27,4 +27,21 @@ router.post("/api/v1/users", async (req, res) => {
 });
 
 
+router.post("/api/v1/users/delete", async (req, res) => {
+    try {
+        const { id } = req.body;
+        if (!id) {
+            return res.status(400).send({ message: 'User ID is required' });
+        }
+        const deletedUser = await userModel.findByIdAndDelete(id); // Find and delete user by ID
+        if (!deletedUser) {
+            return res.status(404).send({ message: 'User not found' });
+        }
+        res.send({ message: 'User deleted successfully', user: deletedUser });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send({ message: 'Internal Server Error', error: error.message });
+    }
+});
+
 module.exports = router;
