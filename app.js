@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(require("./routes/routes"));
-app.use(require("./db/dbConnect"));
+require("./db/dbConnect");
 
 app.listen(Port, () => {
     console.log(`server is working ${Port}`);
